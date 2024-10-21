@@ -1,1 +1,37 @@
-<p>section-a works!</p>
+<div class="sum-squares-container">
+  <h3>Choose an Exercise</h3>
+
+  <!-- Dropdown to choose between exercises -->
+  <div>
+    <label for="exercise">Select Exercise: </label>
+    <select [(ngModel)]="selectedExercise" name="exercise">
+      <option value="sumSquares">Exercise 1 - Sum of Squares</option>
+      <option value="subCubes">Exercise 2 - Sum of Cubes</option>
+      <option value="sumFactorials">Exercise 3 - Sum of Factorials</option>
+      <option value="prodInts">Exercise 6 - Prod Ints</option>
+      <option value="prodSquares">Exercise 7 - Prod Squares</option>
+      <option value="prodCubes">Exercise 8 - Prod Cubes</option>
+      <option value="prodFactorials">Exercise 9 - Prod Factorial</option>
+    </select>
+  </div>
+
+  <!-- Form for input -->
+  <form (ngSubmit)="calculate()">
+    <div>
+      <label for="a">Enter the lower bound (a): </label>
+      <input type="number" [(ngModel)]="a" name="a" required>
+    </div>
+
+    <div>
+      <label for="b">Enter the upper bound (b): </label>
+      <input type="number" [(ngModel)]="b" name="b" required>
+    </div>
+
+    <button type="submit">Calculate</button>
+  </form>
+
+  <!-- Display result -->
+  <div *ngIf="result !== null">
+    <h2>Result: {{ result }}</h2>
+  </div>
+</div>

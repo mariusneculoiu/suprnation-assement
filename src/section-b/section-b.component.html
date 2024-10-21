@@ -1,1 +1,29 @@
-<p>section-b works!</p>
+<div class="container">
+  <h1>Token Parser</h1>
+  <div class="form-group">
+    <label for="expression">Enter a Mathematical Expression:</label>
+    <input
+      id="expression"
+      [(ngModel)]="expression"
+      placeholder="e.g., 1 + 2"
+      class="form-control"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="parserSelect">Select Parser:</label>
+    <select id="parserSelect" [(ngModel)]="selectedParser" class="form-control">
+      <option value="number">Parse Number</option>
+      <option value="operator">Parse Operator</option>
+      <option value="openParenthesis">Parse Open Parenthesis</option>
+      <option value="closeParenthesis">Parse Close Parenthesis</option>
+    </select>
+  </div>
+
+  <button (click)="tokenize()" class="btn btn-primary">Tokenize</button>
+
+  <div *ngIf="result" class="result mt-4">
+    <h2>Result:</h2>
+    <pre>{{ result | json }}</pre>
+  </div>
+</div>
