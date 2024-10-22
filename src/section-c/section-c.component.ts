@@ -46,7 +46,7 @@ export class SectionCComponent {
   }
 
   private expressionValidator(control: any) {
-    const expressionPattern = /^[0-9+\-*/().=\s]+$/;  // Simple regex for basic math expressions
+    const expressionPattern = /^[0-9+\-*/().=\s]+$/;
     if (!expressionPattern.test(control.value)) {
       return { invalidExpression: true };
     }
