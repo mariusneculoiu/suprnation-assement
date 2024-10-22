@@ -1,1 +1,54 @@
-<!--<h1>Expression Test {{expression | json}}</h1>-->
+<div class="container">
+  <h2>Expression Evaluator</h2>
+
+  <form [formGroup]="expressionForm" (ngSubmit)="evaluateExpression()">
+    <div class="input-group">
+      <input
+        formControlName="expressionInput"
+        placeholder="e.g., 1 + 2"
+        class="form-control"
+        [ngClass]="{'is-invalid': expressionForm.controls['expressionInput'].invalid && (expressionForm.controls['expressionInput'].touched || submitAttempted)}"
+      />
+      <button type="submit" class="btn btn-primary" [disabled]="expressionForm.invalid">Evaluate</button>
+    </div>
+
+    <div *ngIf="expressionForm.controls['expressionInput'].invalid && (expressionForm.controls['expressionInput'].touched || submitAttempted)">
+      <div *ngIf="expressionForm.controls['expressionInput'].errors?.['required']" class="error-text">
+        Expression is required.
+      </div>
+      <div *ngIf="expressionForm.controls['expressionInput'].errors?.['invalidExpression']" class="error-text">
+        Invalid expression. Only numbers, basic operators, and parentheses are allowed.
+      </div>
+    </div>
+  </form>
+
+  @if (errorMessage) {
+    <div class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  }
+
+  @if (!errorMessage && result !== null) {
+    <div class="result mt-4">
+      <h2>Result:</h2>
+      <div class="result-box">
+        <pre>{{ result | json }}</pre>
+      </div>
+    </div>
+  }
+
+
+  @if (history.length) {
+    <div class="history">
+      <h3>History (Last 5 expressions)</h3>
+      <ul>
+        @for ( entry of history; track entry) {
+          <li>
+            {{ entry.expression }} = {{ entry.result | json }}
+          </li>
+        }
+      </ul>
+    </div>
+  }
+
+</div>

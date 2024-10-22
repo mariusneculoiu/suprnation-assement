@@ -62,32 +62,31 @@ export class SectionAComponent implements OnInit{
     console.log('###############################');
   }
 
-  // Called when the form is submitted
   public calculate(): void {
     switch (this.selectedExercise) {
       case 'sumSquares':
-        this.result = this.sumSquares(this.a, this.b);  // Call sumSquares
+        this.result = this.sumSquares(this.a, this.b);
         break;
       case 'subCubes':
-        this.result = this.subCubes(this.a, this.b);    // Call subCubes
+        this.result = this.subCubes(this.a, this.b);
         break;
       case 'sumFactorials':
-        this.result = this.subFactorials(this.a, this.b);  // Call sumFactorials
+        this.result = this.subFactorials(this.a, this.b);
         break;
       case 'prodInts':
-        this.result = this.prodInts(this.a, this.b);    // Call prodInts
+        this.result = this.prodInts(this.a, this.b);
         break;
       case 'prodSquares':
-        this.result = this.prodSquares(this.a, this.b);  // Call prodSquares
+        this.result = this.prodSquares(this.a, this.b);
         break;
       case 'prodCubes':
-        this.result = this.prodCubes(this.a, this.b);   // Call prodCubes
+        this.result = this.prodCubes(this.a, this.b);
         break;
       case 'prodFactorials':
-        this.result = this.prodFactorials(this.a, this.b);  // Call prodFactorials
+        this.result = this.prodFactorials(this.a, this.b);
         break;
       default:
-        this.result = 0;  // Default case, if no valid exercise is selected
+        this.result = 0;
         break;
     }
   }
